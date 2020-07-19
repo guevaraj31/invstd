@@ -50,6 +50,7 @@ class ProductController extends Controller
         $product->sku   = $request->sku;
         $product->qty   = $request->qty;
         $product->price = $request->price;
+        $product->status = '1';
         $product->save();
         return redirect('home')->with('status', 'Producto creado!');
     }
@@ -62,7 +63,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return Product::find($id);
     }
 
     /**
@@ -73,7 +74,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Product::find($id);
     }
 
     /**
@@ -85,7 +86,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto = Product::find($id);
+        $product->name  = $request->name;
+        $product->sku   = $request->sku;
+        $product->qty   = $request->qty;
+        $product->price = $request->price;
+        $product->save();
+        return redirect('home')->with('status', 'Producto actualizado!');
     }
 
     /**
@@ -96,6 +103,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Soft Delete
+        $product = Product::find($id);
+        $product->status = '0';
+        $product->save();
+        return redirect('home')->with('status','Producto eliminado!');      
     }
 }
