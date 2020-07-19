@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
         <h2>Productos</h2>
+        <a href="{{ url('products/create') }}" class="btn btn-primary">Crear</a>
         <table class="table table-bordered" id="products_datatable">
             <thead>
                 <tr>
