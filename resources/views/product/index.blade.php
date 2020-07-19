@@ -11,6 +11,7 @@
                     <th>SKU</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
         </table>

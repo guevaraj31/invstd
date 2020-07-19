@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   
     <link  href="/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <script src="/js/jquery.js"></script>  
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery.dataTables.min.js" defer></script>
@@ -92,7 +93,12 @@
                         { data: 'name', name: 'name' },
                         { data: 'sku', name: 'sku' },
                         { data: 'qty', name: 'qty' },
-                        { data: 'price', name: 'price' }
+                        { data: 'price', name: 'price' },
+                        { 
+                            mRender: function (data, type, row) {
+                                return "<a href=\"/products/"+row.id+"/edit\"><i class='fa fa-pencil' aria-hidden='true'></i></a>";
+                            }
+                        }
                     ]
             });
         });
