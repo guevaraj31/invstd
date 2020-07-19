@@ -45,7 +45,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->name  = $request->name;
+        $product->sku   = $request->sku;
+        $product->qty   = $request->qty;
+        $product->price = $request->price;
+        $product->save();
+        return redirect('home')->with('status', 'Producto creado!');
     }
 
     /**
