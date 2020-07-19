@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Redirect,Response,DB,Config;
+use Datatables;
+
 use App\Product;
 
 class ProductController extends Controller
@@ -24,8 +27,16 @@ class ProductController extends Controller
      */
     public function index()
     {
+        return view('product.index');
+    }
+    /**
+     * Products List
+     */
+    public function productsList()
+    {
         $products = Product::all();
-        return view('product.index',['products'=> $products]);
+        return datatables()->of($products)
+            ->make(true);
     }
 
     /**

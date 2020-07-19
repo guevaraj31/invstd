@@ -18,6 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  
+    <link  href="/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="/js/jquery.js"></script>  
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js" defer></script>
+
 </head>
 <body>
     <div id="app">
@@ -76,5 +82,20 @@
             @yield('content')
         </main>
     </div>
+    <script>
+    $(document).ready( function () {
+        $('#products_datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('products-list') }}",
+            columns: [
+                        { data: 'name', name: 'name' },
+                        { data: 'sku', name: 'sku' },
+                        { data: 'qty', name: 'qty' },
+                        { data: 'price', name: 'price' }
+                    ]
+            });
+        });
+    </script>
 </body>
 </html>

@@ -2,21 +2,16 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-container-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    Crear
-                </div>
-                <div class="card-body">
-                    @forelse ($products as $product)
-                        <li>{{ $product->name }}</li>
-                    @empty
-                        <p>No hay productos disponibles</p>
-                    @endforelse
-                </div>
-            </div>
-        </div>
-    </div>
+        <h2>Productos</h2>
+        <table class="table table-bordered" id="products_datatable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>SKU</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+        </table>
 </div>
 @endsection
