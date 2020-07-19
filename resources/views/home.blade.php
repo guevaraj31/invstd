@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ $products[0] }}
+                    <a href="/products">Listado de productos</a>
                 </div>
             </div>
         </div>
