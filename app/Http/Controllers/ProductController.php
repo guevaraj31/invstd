@@ -34,7 +34,7 @@ class ProductController extends Controller
      */
     public function productsList()
     {
-        $products = Product::all();
+        $products = Product::where('status','1');
         return datatables()->of($products)
             ->make(true);
     }
