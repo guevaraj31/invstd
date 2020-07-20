@@ -84,6 +84,16 @@
         </main>
     </div>
     <script>
+    function confirmarProducto(id)
+    {
+        $("#confirmarModal").modal("show");
+        console.log("eliminar producto:"+id);
+    }
+    function eliminarProducto()
+    {
+        $("#confirmarModal").modal("hide");
+        $("#eliminarModal").modal("show");
+    }
     $(document).ready( function () {
         $('#products_datatable').DataTable({
             processing: true,
@@ -96,7 +106,7 @@
                         { data: 'price', name: 'price' },
                         { 
                             mRender: function (data, type, row) {
-                                return "<a href=\"/products/"+row.id+"\" title='Ver'><i class='fa fa-eye' aria-hidden='true'></i></a>  <a href=\"/products/"+row.id+"/edit\" title='Editar'><i class='fa fa-pencil' aria-hidden='true'></i></a>  <a href=\"/products/"+row.id+"/edit\" title='Eliminar'><i class='fa fa-trash' aria-hidden='true'></i></a>";
+                                return "<a href=\"/products/"+row.id+"\" title='Ver'><i class='fa fa-eye' aria-hidden='true'></i></a>  <a href=\"/products/"+row.id+"/edit\" title='Editar'><i class='fa fa-pencil' aria-hidden='true'></i></a>  <a href='#' onclick='confirmarProducto("+row.id+")' title='Eliminar'><i class='fa fa-trash' aria-hidden='true'></i></a>";
                             }
                         }
                     ]

@@ -16,4 +16,46 @@
             </thead>
         </table>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmarModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">⚠️Eliminar</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>¿Eliminar el producto?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="eliminarProducto()" class="btn btn-primary" data-dismiss="modal">Si</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+      </div>
+      
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="eliminarModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Información</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>El producto ha sido eliminado</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 @endsection
