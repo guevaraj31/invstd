@@ -88,7 +88,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        return Product::find($id);
+        $product = Product::find($id);
+
+        return view('product.edit',['product' => $product ]);
     }
 
     /**
@@ -100,11 +102,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $producto = Product::find($id);
+        $product = Product::find($id);
+        
         $product->name  = $request->name;
-        $product->sku   = $request->sku;
+        $product->sku   = $product->sku; //No permite cambiar SKU
         $product->qty   = $request->qty;
         $product->price = $request->price;
+        $product->status = '1';
         $product->save();
         return redirect('home')->with('status', 'Producto actualizado!');
     }
