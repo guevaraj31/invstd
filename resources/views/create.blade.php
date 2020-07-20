@@ -15,7 +15,8 @@
                         <input name="sku" id="sku" placeholder="Código de parte" type="text">
                         <input name="qty" id="qty" placeholder="Cantidad" type="number">
                         <input name="price" id="price" placeholder="Precio $" type="number">
-                        <input type="submit" value="Guardar">
+                        <input type="submit" value="Guardar" class="btn btn-primary">
+                        <a href="{{ url('products') }}" title="Regresar" class="btn btn-info">Regresar</a>
                     </form>
                 </div>
             </div>
