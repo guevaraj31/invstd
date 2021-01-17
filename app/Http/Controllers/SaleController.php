@@ -26,8 +26,20 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
+        return view('sale.index');
     }
+
+    /**
+     * Sales List
+     */
+    public function salesList()
+    {
+        $sales = Sale::all();
+
+        return datatables()->of($sales)
+                ->make(true);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +48,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //return view('create');
+        return view('sale.create');
     }
 
     /**

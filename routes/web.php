@@ -26,4 +26,5 @@ Route::resource('products', 'ProductController');
 Route::get('products-list','ProductController@productsList');
 
 //Ventas
-//Route::resource('sales', 'SaleController');
+Route::resource('sales', 'SaleController');
+Route::get('sales-list','SaleController@salesList');

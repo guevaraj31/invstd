@@ -112,6 +112,25 @@
                     ]
             });
         });
+
+        $(document).ready( function () {
+        $('#sales_datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('sales-list') }}",
+            columns: [
+                        { data: 'name', name: 'name' },
+                        { data: 'sku', name: 'sku' },
+                        { data: 'qty', name: 'qty' },
+                        { data: 'price', name: 'price' },
+                        { 
+                            mRender: function (data, type, row) {
+                                return "<a href=\"/products/"+row.id+"\" title='Ver'><i class='fa fa-eye' aria-hidden='true'></i></a>  <a href=\"/products/"+row.id+"/edit\" title='Editar'><i class='fa fa-pencil' aria-hidden='true'></i></a>  <a href='#' onclick='confirmarProducto("+row.id+")' title='Eliminar'><i class='fa fa-trash' aria-hidden='true'></i></a>";
+                            }
+                        }
+                    ]
+            });
+        });
     </script>
 </body>
 </html>

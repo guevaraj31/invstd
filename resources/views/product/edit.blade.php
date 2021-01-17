@@ -24,7 +24,7 @@
                                 SKU:         
                             </div>
                             <div class="col-sm-6">
-                                <input class="form-control" type="text" value="{{ $product->sku }}" id="sku" name="sku" required>
+                                <input class="form-control" type="text" value="{{ $product->sku }}" id="sku" name="sku" required disabled>
                             </div>
                             <div class="col-sm-6">
                                 Cantidad:         
