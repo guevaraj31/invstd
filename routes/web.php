@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Productos
 Route::resource('products', 'ProductController');
 Route::get('products-list','ProductController@productsList');
+Route::get('product-detail/{sku}','ProductController@productBySku');
 
 //Ventas
 Route::resource('sales', 'SaleController');

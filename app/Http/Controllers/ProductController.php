@@ -40,6 +40,17 @@ class ProductController extends Controller
     }
 
     /**
+     * 
+     * Product detail
+     */
+    public function productBySku( $sku )
+    {
+        $product = Product::where('sku',$sku)->first();
+
+        return $product;
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 use App\Sale;
+use App\Product;
+
+use Auth;
 
 class SaleController extends Controller
 {
@@ -48,7 +52,9 @@ class SaleController extends Controller
      */
     public function create()
     {
-        return view('sale.create');
+        $products = Product::all();
+
+        return view('sale.create',['products'=>$products]);
     }
 
     /**
@@ -59,7 +65,17 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $sale = new Sale();
+        $sale->qty   = $request->qty;
+        $sale->price = $request->price;
+        $sale->product_id = $request->id;
+        $sale->user_id = Auth::id();
+        DB::beginTransaction();
+        if( $sale->save() )
+            DB::commit();
+        else
+            DB::rollBack();
+        return redirect('home')->with('status', 'Venta realizada exitosamente!');
     }
 
     /**

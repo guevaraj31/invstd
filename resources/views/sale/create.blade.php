@@ -14,11 +14,9 @@
                             <label for="exampleDataList" class="form-label">Código del producto:</label>
                             <input class="form-control" list="datalistOptions" id="salesDataList" placeholder="Ingresar código del producto">
                             <datalist id="datalistOptions">
-                                <option value="San Francisco">
-                                <option value="New York">
-                                <option value="Seattle">
-                                <option value="Los Angeles">
-                                <option value="Chicago">
+                                @foreach ($products as $product)
+                                    <option value="{{$product->sku}}">
+                                @endforeach
                             </datalist>
                         </div>
                         <div class="col-sm-12">
@@ -31,12 +29,15 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center">
-                    <h2>Detalle de venta</h2>
+                    <h2>Detalle de producto</h2>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="/sales">
                         @csrf
                         <div class="col-sm-12">
+                            <div class="col-sm-12 mb-2">
+                                <div id="saleDetailBox"></div>
+                            </div>
                             <div class="col-sm-12 mb-2">
                                 <input type="submit" value="Confirmar" class="btn btn-primary btn-block">
                             </div>

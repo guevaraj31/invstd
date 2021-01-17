@@ -130,6 +130,19 @@
                         }
                     ]
             });
+
+        $('#salesDataList').change(function(){
+            $.ajax({
+                    url: "{{ url('product-detail') }}/" + $('#salesDataList').val()
+                }).done(function( data ) {
+                    //console.log( data.price );
+                    $('#saleDetailBox').html('<p>Nombre:  '+ data.name +' </p>'
+                                               +'<p>Precio :  ' + data.price + '$</p>'
+                                               +'<p>Existencia :  ' + data.qty + '</p>'
+                    );        
+                });
+            
+        });
         });
     </script>
 </body>
