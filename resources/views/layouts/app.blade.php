@@ -119,27 +119,34 @@
             serverSide: true,
             ajax: "{{ url('sales-list') }}",
             columns: [
-                        { data: 'name', name: 'name' },
-                        { data: 'sku', name: 'sku' },
+                        { data: 'product_id', name: 'product_id' },
+                        { data: 'user_id', name: 'user_id' },
                         { data: 'qty', name: 'qty' },
-                        { data: 'price', name: 'price' },
-                        { 
+                        { data: 'price', name: 'price' }
+                        /*{ 
                             mRender: function (data, type, row) {
                                 return "<a href=\"/products/"+row.id+"\" title='Ver'><i class='fa fa-eye' aria-hidden='true'></i></a>  <a href=\"/products/"+row.id+"/edit\" title='Editar'><i class='fa fa-pencil' aria-hidden='true'></i></a>  <a href='#' onclick='confirmarProducto("+row.id+")' title='Eliminar'><i class='fa fa-trash' aria-hidden='true'></i></a>";
                             }
-                        }
+                        }*/
                     ]
             });
 
         $('#salesDataList').change(function(){
+            var productSku = $("#salesDataList").val();
             $.ajax({
                     url: "{{ url('product-detail') }}/" + $('#salesDataList').val()
                 }).done(function( data ) {
+                    $("#product_sku").val( productSku );
+                    $("#product").val( productSku );
+                    $("#name").val( data.name );
+                    $("#price").val( data.price );
+                    $("#qty").val( data.qty );
                     //console.log( data.price );
-                    $('#saleDetailBox').html('<p>Nombre:  '+ data.name +' </p>'
-                                               +'<p>Precio :  ' + data.price + '$</p>'
-                                               +'<p>Existencia :  ' + data.qty + '</p>'
-                    );        
+                    /*$('#saleDetailBox').html('<p>SKU : <input class="form-control" name="product_sku" id="product_sku" type="text" value = "' + productSku + '" disabled></p>'
+                                               +'<p>Nombre:  <input class="form-control" name="name" id="name" type="text" value = "'+ data.name +'" disabled> </p>'
+                                               +'<p>Precio($) :  <input class="form-control" name="price" id="price" type="text" value = "' + data.price + '" disabled></p>'
+                                               +'<p>Existencia : <input class="form-control" name="qty" id="qty" type="text" value = "' + data.qty + '" disabled></p>'
+                    );*/        
                 });
             
         });

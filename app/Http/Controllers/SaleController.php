@@ -65,17 +65,24 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
+        $product = Product::where('sku',$request->product_sku)->first();
+        
         $sale = new Sale();
-        $sale->qty   = $request->qty;
+        $sale->qty   = 1;
         $sale->price = $request->price;
-        $sale->product_id = $request->id;
+        $sale->product_id = $product->id;
         $sale->user_id = Auth::id();
         DB::beginTransaction();
         if( $sale->save() )
-            DB::commit();
+        {
+               DB::commit();
+               return redirect('home')->with('status', 'Venta registrada exitosamente!');
+        }
         else
+        {
             DB::rollBack();
-        return redirect('home')->with('status', 'Venta realizada exitosamente!');
+            return redirect('sales/create')->with('error','Ocurrió un problema al intentar registrar la venta.');
+        }
     }
 
     /**

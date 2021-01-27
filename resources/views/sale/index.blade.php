@@ -7,11 +7,10 @@
         <table class="table table-bordered" id="sales_datatable">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>SKU</th>
+                    <th>Producto</th>
+                    <th>Vendedor</th>
                     <th>Cantidad</th>
                     <th>Precio de venta</th>
-                    <th>Opciones</th>
                 </tr>
             </thead>
         </table>
