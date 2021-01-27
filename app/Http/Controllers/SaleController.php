@@ -52,7 +52,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
+        $products = Product::where('status','1');
 
         return view('sale.create',['products'=>$products]);
     }
@@ -67,6 +67,9 @@ class SaleController extends Controller
     {
         $product = Product::where('sku',$request->product_sku)->first();
         
+        if( !isset($product) )
+            return redirect('sales/create')->with('error','El SKU no existe.');
+        
         $sale = new Sale();
         $sale->qty   = 1;
         $sale->price = $request->price;
@@ -75,8 +78,13 @@ class SaleController extends Controller
         DB::beginTransaction();
         if( $sale->save() )
         {
-               DB::commit();
-               return redirect('home')->with('status', 'Venta registrada exitosamente!');
+            if($product->qty > 0)
+            {
+                $product->qty -= 1; //Resta una unidad del inventario
+                $product->save();
+            } 
+            DB::commit();
+            return redirect('home')->with('status', 'Venta registrada exitosamente!');
         }
         else
         {

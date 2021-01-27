@@ -2,18 +2,16 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-container-center">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-        @if (session('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('error') }}
-            </div>
-        @endif
-    </div>
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="row justify-container-center">
         <div class="col-md-6">
             <div class="card">
@@ -61,7 +59,7 @@
                                 <input class="form-control" name="name" id="name" placeholder="Nombre" type="text">
                             </div>
                             <div class="col-sm-12">
-                                Cantidad:         
+                                Existencia:         
                             </div>
                             <div class="col-sm-12">
                                 <input class="form-control" name="qty" id="qty" placeholder="Cantidad" type="number">

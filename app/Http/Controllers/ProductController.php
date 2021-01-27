@@ -117,10 +117,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validatedData = $request->validate([
+            'sku' => 'required|unique:products'
+        ]);
+
         $product = Product::find($id);
         
         $product->name  = $request->name;
-        $product->sku   = $product->sku; //No permite cambiar SKU
+        $product->sku   = $request->sku; //SKU debe ser unico
         $product->qty   = $request->qty;
         $product->price = $request->price;
         $product->status = '1';
@@ -154,6 +159,7 @@ class ProductController extends Controller
         //Soft Delete
         $product = Product::find($request->sku_d);
         $product->status = '-1';
+        $product->sku = $product->sku . '-DELETED'; //Libera el SKU 
         $product->save();
         return redirect('/products')->with('status','Producto eliminado!');      
     }

@@ -24,7 +24,10 @@
                                 SKU:         
                             </div>
                             <div class="col-sm-6">
-                                <input class="form-control" type="text" value="{{ $product->sku }}" id="sku" name="sku" required disabled>
+                                <input class="form-control @error('sku') is-invalid @enderror" type="text" value="{{ $product->sku }}" id="sku" name="sku" required>
+                                @error('sku')
+                                    <div class="alert alert-danger">El SKU se encuentra ocupado</div>
+                                @enderror
                             </div>
                             <div class="col-sm-6">
                                 Cantidad:         

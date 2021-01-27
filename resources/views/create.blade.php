@@ -38,7 +38,7 @@
                                 Precio: 
                             </div>
                             <div class="col-sm-6">
-                                <input class="form-control" name="price" id="price" placeholder="Precio $" type="number">
+                                <input class="form-control" name="price" id="price" placeholder="Precio $" type="number" step="0.1">
                             </div>    
                             
                         </div>
