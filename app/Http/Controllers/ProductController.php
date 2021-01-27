@@ -68,6 +68,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'sku' => 'required|unique:products'
+        ]);
+
         $product = new Product();
         $product->name  = $request->name;
         $product->sku   = $request->sku;
@@ -134,8 +138,23 @@ class ProductController extends Controller
     {
         //Soft Delete
         $product = Product::find($id);
-        $product->status = '0';
+        $product->status = '-1';
         $product->save();
-        return redirect('home')->with('status','Producto eliminado!');      
+        return redirect('/products')->with('status','Producto eliminado!');      
+    }
+
+    /**
+     * Remove the specified resource from storage with SoftDelete.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function productDelete(Request $request)
+    {
+        //Soft Delete
+        $product = Product::find($request->sku_d);
+        $product->status = '-1';
+        $product->save();
+        return redirect('/products')->with('status','Producto eliminado!');      
     }
 }

@@ -87,6 +87,7 @@
     function confirmarProducto(id)
     {
         $("#confirmarModal").modal("show");
+        $("#sku_d").val(id);
         console.log("eliminar producto:"+id);
     }
     function eliminarProducto()

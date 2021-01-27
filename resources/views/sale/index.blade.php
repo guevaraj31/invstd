@@ -3,7 +3,8 @@
 @section('content')
 <div class="container">
         <h2>Ventas</h2>
-        <a href="{{ url('sales/create') }}" class="btn btn-primary mb-2">Crear</a>
+        <a href="{{ url('sales/create') }}" class="btn btn-primary mb-4">Crear</a>
+        <a href="{{ url('home') }}" class="btn btn-light mb-4">Regresar</a>
         <table class="table table-bordered" id="sales_datatable">
             <thead>
                 <tr>

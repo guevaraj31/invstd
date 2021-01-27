@@ -2,8 +2,19 @@
 
 @section('content')
 <div class="container">
+        @if (session('status'))
+          <div class="alert alert-success" role="alert">
+              {{ session('status') }}
+          </div>
+        @endif
+        @if (session('error'))
+          <div class="alert alert-danger" role="alert">
+              {{ session('error') }}
+          </div>
+        @endif
         <h2>Productos</h2>
-        <a href="{{ url('products/create') }}" class="btn btn-primary">Crear</a>
+        <a href="{{ url('products/create') }}" class="btn btn-primary mb-4">Crear</a>
+        <a href="{{ url('home') }}" class="btn btn-light mb-4">Regresar</a>
         <table class="table table-bordered" id="products_datatable">
             <thead>
                 <tr>
@@ -31,8 +42,14 @@
           <p>¿Eliminar el producto?</p>
         </div>
         <div class="modal-footer">
-            <button type="button" onclick="eliminarProducto()" class="btn btn-primary" data-dismiss="modal">Si</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            <form action="{{ url('products-delete') }}" method="POST">
+                @method('PUT')
+                @csrf
+                <input type="hidden" name="sku_d" id="sku_d">
+                <button type="submit" class="btn btn-primary">Si</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            </form>
+            
         </div>
       </div>
       

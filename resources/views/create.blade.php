@@ -21,8 +21,12 @@
                             <div class="col-sm-6">
                                 SKU:         
                             </div>
+                            
                             <div class="col-sm-6">
-                                <input class="form-control" name="sku" id="sku" placeholder="Código de parte" type="text">
+                                <input class="form-control @error('sku') is-invalid @enderror" name="sku" id="sku" placeholder="Código de parte" type="text">
+                                @error('sku')
+                                    <div class="alert alert-danger">El SKU se encuentra ocupado</div>
+                                @enderror
                             </div>
                             <div class="col-sm-6">
                                 Cantidad:         
